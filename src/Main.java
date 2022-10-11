@@ -1,4 +1,6 @@
 public class Main {
+
+    private static String error = "";
     public static void main(String[] args) {
         String login1 = "jksdadf";
         String pass1 = login1;
@@ -8,7 +10,7 @@ public class Main {
         String pass2 = "ldkj__2334";
         String confirmPass2 = pass2;
 
-        String login3 = "QEElkf2453askjhfkjh234523";
+        String login3 = "QEE523";
         String pass3 = "adlajk23479238j";
         String confirmPass3 = "skdhfkajshldkjhas";
 
@@ -45,23 +47,23 @@ public class Main {
                 checkConfirmPass(password, confirmPassword)) {
             System.out.println("с логином " + login + " и паролем все ок");
         } else if (!checkSimbols(login)){
-            throw new WrongLoginEception("неверный логин " + login, login);
+            throw new WrongLoginEception(error, login);
         } else if (!checkSimbols(password)) {
-            throw new WrongPassException("неверный пароль " + password, password);
+            throw new WrongPassException(error, password);
         } else {
-            throw new WrongPassException("несовпадает подтверждение пароля", password);
+            throw new WrongPassException("несовпадает подтверждение пароля " + password, password);
         }
     }
 
     public static boolean checkSimbols(String s) {
         boolean check = false;
-        System.out.println("проверка строки " + s);
+        //System.out.println("проверка строки " + s);
         if (s.matches("[A-z, 0-9, _]+") && s.length() <= 20) {
             return true;
         } else if (s.length() > 20) {
-            System.out.println("Длина логина / пароля не должна превышать 20 символов");
+            error = "Длина логина / пароля не должна превышать 20 символов";
         } else {
-            System.out.println("Введены недопустимые символы");
+            error = "Введены недопустимые символы";
         }
         return check;
     }
