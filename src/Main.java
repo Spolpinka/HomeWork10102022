@@ -4,7 +4,7 @@ public class Main {
         String pass1 = login1;
         String confirmPass1 = login1;
 
-        String login2 = "ыаппа23sgf";
+        String login2 = "23sgf";
         String pass2 = "ldkj__2334";
         String confirmPass2 = pass2;
 
@@ -56,7 +56,7 @@ public class Main {
     public static boolean checkSimbols(String s) {
         boolean check = false;
         System.out.println("проверка строки " + s);
-        if (s.matches("[A-z]+") && s.length() <= 20) {
+        if (s.matches("[A-z, 0-9, _]+") && s.length() <= 20) {
             return true;
         } else if (s.length() > 20) {
             System.out.println("Длина логина / пароля не должна превышать 20 символов");
