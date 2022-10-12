@@ -2,11 +2,11 @@ public class Main {
 
     private static String error = "";
     public static void main(String[] args) {
-        String login1 = "jksdadf";
+        String login1 = "jksd_adf";
         String pass1 = login1;
         String confirmPass1 = login1;
 
-        String login2 = "23sgf";
+        String login2 = "23sgыf";
         String pass2 = "ldkj__2334";
         String confirmPass2 = pass2;
 
@@ -17,24 +17,25 @@ public class Main {
         try {
             checkAuthority(login1, pass1, confirmPass1);
 
-        } catch (WrongLoginEception | WrongPassException exception) {
-            System.out.println(exception);
+        } catch (WrongLoginEception | WrongPassException e) {
+            System.out.println(e);
         } catch (Exception e) {
             System.out.println("неизвестная ошибка");
         }
 
         try {
             checkAuthority(login2, pass2, confirmPass2);
-        } catch (WrongLoginEception | WrongPassException exception) {
-            System.out.println(exception);
+        } catch (WrongLoginEception | WrongPassException e) {
+            System.out.println(e);
         } catch (Exception e) {
             System.out.println("неизвестная ошибка");
         }
 
         try {
             checkAuthority(login3, pass3, confirmPass3);
-        } catch (WrongLoginEception | WrongPassException exception) {
-            System.out.println(exception);
+        } catch (WrongLoginEception | WrongPassException e) {
+            System.out.println(e);
+            e.printStackTrace();
         } catch (Exception e) {
             System.out.println("неизвестная ошибка");
         }
@@ -58,7 +59,7 @@ public class Main {
     public static boolean checkSimbols(String s) {
         boolean check = false;
         //System.out.println("проверка строки " + s);
-        if (s.matches("[A-z, 0-9, _]+") && s.length() <= 20) {
+        if (s.matches("[A-z0-9_]+") && s.length() <= 20) {
             return true;
         } else if (s.length() > 20) {
             error = "Длина логина / пароля не должна превышать 20 символов";
